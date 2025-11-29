@@ -782,6 +782,75 @@
             font-weight: 500;
         }
 
+        /* Menú hamburguesa para móvil */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: var(--text);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 15, 26, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-menu a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--primary);
+        }
+
         @media (max-width: 1024px) {
             html {
                 font-size: 17px;
@@ -812,30 +881,360 @@
                 font-size: 16px;
             }
 
+            .menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
             .nav-links {
                 display: none;
             }
 
+            nav {
+                padding: 1rem 1.25rem;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            section {
+                padding: 4rem 1.25rem;
+                min-height: auto;
+            }
+
+            #hero {
+                min-height: 100vh;
+                padding-top: 5rem;
+            }
+
+            .hero-badge {
+                padding: 0.6rem 1.1rem;
+                font-size: 0.85rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+                margin-bottom: 1.25rem;
+                line-height: 1.15;
+            }
+
+            .hero-subtitle {
+                font-size: 1.05rem;
+                margin-bottom: 2rem;
+                line-height: 1.7;
+                padding: 0 0.5rem;
+            }
+
             .hero-stats {
                 grid-template-columns: 1fr;
-                gap: 1.25rem;
+                gap: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .stat-item {
+                padding: 1.25rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.9rem;
+            }
+
+            .github-link {
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .section-badge {
+                font-size: 0.75rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+                line-height: 1.2;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+
+            .problem-grid {
+                gap: 2.5rem;
+            }
+
+            .problem-stat {
+                padding: 1.25rem;
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .problem-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                margin: 0 auto;
+            }
+
+            .problem-stat h4 {
+                font-size: 1.05rem;
+            }
+
+            .problem-stat p {
+                font-size: 0.95rem;
+            }
+
+            .problem-highlight {
+                padding: 1.75rem 1.25rem;
+                border-radius: 20px;
+            }
+
+            .problem-highlight h3 {
+                font-size: 1.35rem;
+                justify-content: center;
+            }
+
+            .colombia-stat {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .colombia-stat-value {
+                font-size: 1.5rem;
+            }
+
+            .demo-container {
+                gap: 2.5rem;
+            }
+
+            .phone-mockup {
+                max-width: 280px;
+            }
+
+            .demo-feature {
+                padding: 1.25rem;
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .demo-feature-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+                margin: 0 auto;
+            }
+
+            .demo-feature h4 {
+                font-size: 1.1rem;
+            }
+
+            .demo-feature p {
+                font-size: 0.95rem;
+            }
+
+            .arch-card {
+                padding: 1.75rem 1.5rem;
+            }
+
+            .arch-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.75rem;
+            }
+
+            .arch-card h4 {
+                font-size: 1.2rem;
+            }
+
+            .arch-list li {
+                font-size: 0.95rem;
+            }
+
+            .stack-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .stack-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .stack-icon {
+                font-size: 2.5rem;
+            }
+
+            .stack-card h4 {
+                font-size: 1rem;
+            }
+
+            .stack-card p {
+                font-size: 0.85rem;
+            }
+
+            .roadmap::before {
+                left: 15px;
+                width: 2px;
+            }
+
+            .roadmap-item {
+                padding-left: 45px;
+            }
+
+            .roadmap-dot {
+                left: 7px;
+                width: 18px;
+                height: 18px;
+            }
+
+            .roadmap-content {
+                padding: 1.5rem 1.25rem;
+            }
+
+            .roadmap-phase {
+                font-size: 0.75rem;
+            }
+
+            .roadmap-content h4 {
+                font-size: 1.1rem;
+            }
+
+            .roadmap-content p {
+                font-size: 0.95rem;
+            }
+
+            .team-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            .team-member {
+                width: 100%;
+                max-width: 300px;
+                padding: 2rem 1.5rem;
+            }
+
+            .team-avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+
+            .team-member h4 {
+                font-size: 1.15rem;
+            }
+
+            .team-member p {
+                font-size: 0.95rem;
+            }
+
+            #cta {
+                padding: 4rem 1.25rem;
+            }
+
+            #cta .section-title {
+                font-size: 1.75rem;
+            }
+
+            #cta .section-subtitle {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 1rem 1.75rem;
+                font-size: 1rem;
+            }
+
+            .cta-button svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            footer {
+                padding: 2.5rem 1.25rem;
+            }
+
+            footer p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Extra pequeño - móviles muy pequeños */
+        @media (max-width: 380px) {
+            html {
+                font-size: 14px;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            #hero {
+                padding-top: 4.5rem;
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .stat-number {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
             }
 
             .stack-grid {
                 grid-template-columns: 1fr;
             }
 
-            .team-grid {
+            .problem-highlight h3 {
+                font-size: 1.2rem;
                 flex-direction: column;
-                align-items: center;
+                gap: 0.5rem;
             }
 
-            section {
-                padding: 4rem 1.5rem;
+            .github-link {
+                padding: 0.8rem 1.25rem;
+                font-size: 0.95rem;
             }
 
-            .phone-mockup {
-                max-width: 300px;
+            .team-member {
+                padding: 1.5rem 1.25rem;
+            }
+        }
+
+        /* Landscape móvil */
+        @media (max-height: 500px) and (orientation: landscape) {
+            #hero {
+                min-height: auto;
+                padding: 5rem 2rem 3rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .hero-orb {
+                opacity: 0.2;
             }
         }
 
@@ -876,6 +1275,72 @@
             visibility: hidden;
             pointer-events: none;
         }
+
+        /* Mejoras táctiles para móvil */
+        @media (hover: none) and (pointer: coarse) {
+            .problem-stat:hover,
+            .demo-feature:hover,
+            .arch-card:hover,
+            .stack-card:hover,
+            .team-member:hover,
+            .phone-mockup:hover img {
+                transform: none;
+                box-shadow: none;
+            }
+
+            .demo-feature:active {
+                background: rgba(99, 102, 241, 0.08);
+                transform: scale(0.98);
+            }
+
+            .stack-card:active,
+            .arch-card:active,
+            .problem-stat:active {
+                transform: scale(0.98);
+            }
+
+            /* Mejor área táctil */
+            .nav-links a,
+            .mobile-menu a {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        /* Prevenir zoom en inputs en iOS */
+        @media screen and (-webkit-min-device-pixel-ratio: 0) {
+            select,
+            textarea,
+            input {
+                font-size: 16px;
+            }
+        }
+
+        /* Safe area para notch de iPhones */
+        @supports (padding: max(0px)) {
+            nav {
+                padding-left: max(1.25rem, env(safe-area-inset-left));
+                padding-right: max(1.25rem, env(safe-area-inset-right));
+            }
+
+            section {
+                padding-left: max(1.25rem, env(safe-area-inset-left));
+                padding-right: max(1.25rem, env(safe-area-inset-right));
+            }
+        }
+
+        /* Optimización de rendimiento en móvil */
+        @media (max-width: 768px) {
+            .hero-orb {
+                animation: none;
+                opacity: 0.25;
+            }
+
+            * {
+                -webkit-tap-highlight-color: transparent;
+            }
+        }
     </style>
 </head>
 <body>
@@ -889,7 +1354,21 @@
             <li><a href="#mejoras">Roadmap</a></li>
             <li><a href="#equipo">Equipo</a></li>
         </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#problema" onclick="closeMenu()">Problema</a>
+        <a href="#demo" onclick="closeMenu()">Experiencia</a>
+        <a href="#arquitectura" onclick="closeMenu()">Arquitectura</a>
+        <a href="#stack" onclick="closeMenu()">Stack</a>
+        <a href="#mejoras" onclick="closeMenu()">Roadmap</a>
+        <a href="#equipo" onclick="closeMenu()">Equipo</a>
+    </div>
 
     <section id="hero">
         <div class="hero-orb hero-orb-1"></div>
@@ -1277,6 +1756,37 @@
                 const speed = (index + 1) * 20;
                 orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
             });
+        });
+
+        // Menú móvil
+        function toggleMenu() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function closeMenu() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            menuToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Cerrar menú al hacer scroll
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth <= 768) {
+                closeMenu();
+            }
+        });
+
+        // Cerrar menú con tecla Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
         });
     </script>
 </body>
